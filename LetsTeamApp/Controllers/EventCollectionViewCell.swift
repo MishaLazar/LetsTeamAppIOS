@@ -28,7 +28,10 @@ class EventCollectionViewCell: UICollectionViewCell {
     
    
     override func prepareForReuse() {
+        
         super.prepareForReuse()
+        EventTypeListImg.image = nil
+        EventNameListLable.text = nil
         
     }
 }

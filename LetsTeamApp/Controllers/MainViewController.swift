@@ -20,6 +20,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
     @IBOutlet weak var EventContentCollectionView: UICollectionView!
     @IBOutlet weak var segMainEvents: UISegmentedControl!
     
+    @IBOutlet weak var btnCreateNewEvent: UIButton!
     
     /* test
      */
@@ -98,7 +99,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
     
     // this is where you controll the cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-       return CGSize(width:EventContentCollectionView.frame.size.width, height:50)
+       return CGSize(width:EventContentCollectionView.frame.size.width, height:55)
     }
     
     // this is where you controll the cell that has been touch
@@ -106,5 +107,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
         print("you touch cell in index \(indexPath.row)")
         
     }
+    @IBAction func CreateNewEvent(_ sender: Any) {
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "EditEventViewController") as? EditEventViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }    }
     
 }
