@@ -20,6 +20,8 @@
 		84C67972210F7F0700DEBC65 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67971210F7F0700DEBC65 /* EventCollectionViewCell.swift */; };
 		84C67975210FB55500DEBC65 /* EventListViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67974210FB55500DEBC65 /* EventListViewModal.swift */; };
 		84C679772112289500DEBC65 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C679762112289500DEBC65 /* EditEventViewController.swift */; };
+		84C679792116294B00DEBC65 /* UiViewCardEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C679782116294B00DEBC65 /* UiViewCardEffect.swift */; };
+		84C6797C21162BE100DEBC65 /* EventDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6797B21162BE100DEBC65 /* EventDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		84C67971210F7F0700DEBC65 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
 		84C67974210FB55500DEBC65 /* EventListViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModal.swift; sourceTree = "<group>"; };
 		84C679762112289500DEBC65 /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
+		84C679782116294B00DEBC65 /* UiViewCardEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiViewCardEffect.swift; sourceTree = "<group>"; };
+		84C6797B21162BE100DEBC65 /* EventDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDescriptionViewController.swift; sourceTree = "<group>"; };
 		F1026D9A83AD0F38C66E2E0B /* Pods_LetsTeamApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsTeamApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +108,8 @@
 				84C6796C210F758200DEBC65 /* MainViewController.swift */,
 				84C67971210F7F0700DEBC65 /* EventCollectionViewCell.swift */,
 				84C679762112289500DEBC65 /* EditEventViewController.swift */,
+				84C679782116294B00DEBC65 /* UiViewCardEffect.swift */,
+				84C6797B21162BE100DEBC65 /* EventDescriptionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 				842E0545210D256900CBE5F1 /* AppDelegate.swift in Sources */,
 				84C6796D210F758200DEBC65 /* MainViewController.swift in Sources */,
 				84C67970210F7C9400DEBC65 /* Event.swift in Sources */,
+				84C679792116294B00DEBC65 /* UiViewCardEffect.swift in Sources */,
+				84C6797C21162BE100DEBC65 /* EventDescriptionViewController.swift in Sources */,
 				84C679772112289500DEBC65 /* EditEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
