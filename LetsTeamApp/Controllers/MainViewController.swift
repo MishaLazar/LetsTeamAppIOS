@@ -15,8 +15,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
     var Listed = [Event]()
     var MyEvents = [Event]()
     var AllEvents = [Event]()
-    var viewModal:EventListViewModal!
+    var viewModal:EventListViewModal = EventListViewModal.shared
     var numberOfCells:Int = 1
+    
     @IBOutlet weak var EventContentCollectionView: UICollectionView!
     @IBOutlet weak var segMainEvents: UISegmentedControl!
     
@@ -31,18 +32,18 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
         
         
         //test
-        let Myevent:Event = Event(EventName: "EventName", EventType: "sport", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil)
-        let Myevent2:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil)
+        let Myevent:Event = Event(EventName: "EventName", EventType: "sport", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id1")
+        let Myevent2:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id2")
         self.MyEvents.insert(Myevent, at: 0)
         self.MyEvents.insert(Myevent2, at: 0)
         
-        let Listedevent:Event = Event(EventName: "EventName", EventType: "study", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil)
+        let Listedevent:Event = Event(EventName: "EventName", EventType: "study", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id3")
         self.Listed.insert(Listedevent,at: 0)
         
-        let Allevent:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil)
+        let Allevent:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id4")
         self.AllEvents.insert(Allevent, at:0)
         
-        self.viewModal = EventListViewModal(Events: self.MyEvents)
+        self.viewModal.setEvents(Events: self.MyEvents)
         // Do any additional setup after loading the view, typically from a nib.
         changeMainViewSelectedSegment(segMainEvents.selectedSegmentIndex)
         
@@ -63,15 +64,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
         case 0:
             //My
             print(1)
-            viewModal.Events = self.MyEvents
+            self.viewModal.setEvents(Events: self.MyEvents)
         case 1:
             //Listed
             print(2)
-            viewModal.Events = self.Listed
+            self.viewModal.setEvents(Events:self.Listed)
         case 2:
             //All
             print(3)
-            viewModal.Events = self.AllEvents
+            self.viewModal.setEvents(Events:self.AllEvents)
         default:
             break;
         }
@@ -89,7 +90,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
         let cell = EventContentCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell",
                                                       for: indexPath) as! EventCollectionViewCell
         
-        let event:Event = (viewModal?.Events[indexPath.row])!
+        let event:Event = (self.viewModal.Events[indexPath.row])
         
         cell.configureCell(EventName: event.EventName!, EventTypeImg: event.EventType!)
       
@@ -104,11 +105,18 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
     
     // this is where you controll the cell that has been touch
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("you touch cell in index \(indexPath.row)")
-        
+       self.viewModal.setSelectedEvent(event: self.viewModal.Events[indexPath.row])
+       let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "EventDescriptionViewController") as? EventDescriptionViewController{
+            
+            vc.EventIdSelected = self.viewModal.Events[indexPath.row].EventId!
+           
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+       
     }
     @IBAction func CreateNewEvent(_ sender: Any) {
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "EditEventViewController") as? EditEventViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)

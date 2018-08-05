@@ -10,12 +10,25 @@ import Foundation
 
 class EventListViewModal {
     
+    static let shared = EventListViewModal()
+    
+    var selectedEvent:Event?
     var Events = [Event]()
     
-    init(Events:[Event]){
+    /*init(Events:[Event]){
+        self.Events = Events
+    }*/
+    
+    
+    func setEvents(Events:[Event]){
         self.Events = Events
     }
     
-    
+    func setSelectedEvent(event:Event){
+        self.selectedEvent = event
+    }
+    func removeSelectedEvent(){
+        self.selectedEvent = nil
+    }
     
 }
