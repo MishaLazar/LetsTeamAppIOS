@@ -309,6 +309,9 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="six-9X-p7D"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="chat"/>
+                                                <connections>
+                                                    <action selector="goToChatRoom:" destination="fS2-7y-BA5" eventType="touchUpInside" id="VkJ-DN-DJe"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DU-8H-y3O">
                                                 <rect key="frame" x="317" y="8" width="50" height="50"/>
@@ -355,6 +358,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duV-yC-za7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1717.5999999999999" y="-654.42278860569718"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="bgd-Nx-lvN">
+            <objects>
+                <viewController storyboardIdentifier="ChatViewController" id="hvH-J3-tH3" customClass="ChatViewController" customModule="LetsTeamApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="guu-vG-lxN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4ph-sl-m0h"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7X-uK-JMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2618" y="-654"/>
         </scene>
         <!--Edit Event View Controller-->
         <scene sceneID="ajG-zB-8v7">

@@ -39,5 +39,12 @@ class EventDescriptionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func goToChatRoom(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController{
+            
+          self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 }
