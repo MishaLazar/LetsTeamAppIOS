@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseDatabase
 class EditEventViewController: UIViewController {
+    var refEvents: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        refEvents = Database.database().reference().child("events");     // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +22,17 @@ class EditEventViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func saveNewEvent(){
+        let key = refEvents.childByAutoId().key
+        
+        /*let user = ["id":key,
+                    "name": txtEventName.text! as String,
+                    "email": txtEventDesc.text! as String,
+                    "password":txtPassword.text! as String
+        ]*/
+        
+        //refEvents.child(key).setValue(user)
+    }
     /*
     // MARK: - Navigation
 

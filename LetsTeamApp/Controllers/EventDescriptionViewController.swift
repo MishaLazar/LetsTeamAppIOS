@@ -46,5 +46,13 @@ class EventDescriptionViewController: UIViewController {
           self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
+  
+    @IBAction func goToEventLocation(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "MapLocationViewController") as? MapLocationViewController{
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }

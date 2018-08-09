@@ -299,6 +299,9 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="kUQ-gq-bte"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="location.svg"/>
+                                                <connections>
+                                                    <action selector="goToEventLocation:" destination="fS2-7y-BA5" eventType="touchUpInside" id="d1H-dJ-mY2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtV-lR-GSc">
                                                 <rect key="frame" x="8" y="8" width="50" height="50"/>
@@ -374,6 +377,21 @@
             </objects>
             <point key="canvasLocation" x="2618" y="-654"/>
         </scene>
+        <!--Map Location View Controller-->
+        <scene sceneID="qwH-FY-XLj">
+            <objects>
+                <viewController storyboardIdentifier="MapLocationViewController" id="qbP-4X-Gbx" customClass="MapLocationViewController" customModule="LetsTeamApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HmP-f5-MXe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5Gn-X9-2pj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QBa-0B-4st" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3298" y="-656"/>
+        </scene>
         <!--Edit Event View Controller-->
         <scene sceneID="ajG-zB-8v7">
             <objects>
@@ -400,7 +418,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mb0-0F-VhE">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mb0-0F-VhE" userLabel="txtEventName">
                                                 <rect key="frame" x="0.0" y="41" width="375" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -412,7 +430,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PLu-sW-12r">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PLu-sW-12r" userLabel="txtEventDesc">
                                                 <rect key="frame" x="0.0" y="91.5" width="375" height="99"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -424,7 +442,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdu-kW-2Jt">
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdu-kW-2Jt" userLabel="pvEventType">
                                                 <rect key="frame" x="0.0" y="211" width="375" height="216"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Start Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QK-oB-uJg">
@@ -433,7 +451,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="eLm-Tb-n4F">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="eLm-Tb-n4F" userLabel="dpStartDate">
                                                 <rect key="frame" x="0.0" y="447.5" width="375" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="554839328.67261696">
                                                     <!--2018-08-01 18:02:08 +0000-->
@@ -445,7 +463,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uxv-9O-bpf">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uxv-9O-bpf" userLabel="dpEndDate">
                                                 <rect key="frame" x="0.0" y="684" width="375" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="554839494.64141798">
                                                     <!--2018-08-01 18:04:54 +0000-->
