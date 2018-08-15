@@ -7,14 +7,17 @@
 //
 
 import Foundation
+//import Firebase
+//import FirebaseDatabase
 
 class EventListViewModal {
     
     static let shared = EventListViewModal()
-    
+    var userid = "-LIflQXsRuLYHN63v7Hn"
     var selectedEvent:Event?
     var Events = [Event]()
-    
+    var ETypes = [EventTypes]()
+//    private var dbRef = Database.database().reference()
     /*init(Events:[Event]){
         self.Events = Events
     }*/
@@ -22,6 +25,7 @@ class EventListViewModal {
     
     func setEvents(Events:[Event]){
         self.Events = Events
+        
     }
     
     func setSelectedEvent(event:Event){
@@ -30,5 +34,14 @@ class EventListViewModal {
     func removeSelectedEvent(){
         self.selectedEvent = nil
     }
+    
+    func refreshEventsData(){
+       
+    }
+    
+    func refreshLookUpData(){
+        
+    }
+    
     
 }

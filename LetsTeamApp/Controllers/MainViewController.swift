@@ -32,18 +32,18 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         refEvents = Database.database().reference().child("events");
-        refUsers = Database.database().reference().child("users").child("PUT USER ID HERE");
+      //  refUsers = Database.database().reference().child("users").child("PUT USER ID HERE");
 
         //test
-        let Myevent:Event = Event(EventName: "EventName", EventType: "sport", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id1")
-        let Myevent2:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id2")
+        let Myevent:Event = Event(EventName: "EventName", EventType: "sport", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"id1")
+        let Myevent2:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"id2")
         self.MyEvents.insert(Myevent, at: 0)
         self.MyEvents.insert(Myevent2, at: 0)
         
-        let Listedevent:Event = Event(EventName: "EventName", EventType: "study", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id3")
+        let Listedevent:Event = Event(EventName: "EventName", EventType: "study", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"id3")
         self.Listed.insert(Listedevent,at: 0)
         
-        let Allevent:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,EventId:"id4")
+        let Allevent:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"id4")
         self.AllEvents.insert(Allevent, at:0)
         
         self.viewModal.setEvents(Events: self.MyEvents)
@@ -67,8 +67,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
         case 0:
             //My
             print(1)
-            //getMyEvents()
-            self.viewModal.setEvents(Events: self.MyEvents)
+            getMyEvents()
+            //self.viewModal.setEvents(Events: self.MyEvents)
         case 1:
             //Listed
             print(2)
@@ -115,7 +115,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "EventDescriptionViewController") as? EventDescriptionViewController{
             
-            vc.EventIdSelected = self.viewModal.Events[indexPath.row].EventId!
+            vc.EventIdSelected = self.viewModal.Events[indexPath.row].Id!
             
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -139,7 +139,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
                     let eventEndDate = eventObject?["endDate"] as? Date
                     let eventId = eventObject?["id"] as? String
                     
-                    let Allevent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,EventId:eventId)
+                    let Allevent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,Id:eventId)
                     self.AllEvents.append(Allevent)
                 }
             }
@@ -163,7 +163,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
                     let eventEndDate = eventObject?["endDate"] as? Date
                     let eventId = eventObject?["id"] as? String
                     
-                    let Allevent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,EventId:eventId)
+                    let Allevent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,Id:eventId)
                     self.Listed.append(Allevent)
                 }
             }
@@ -181,16 +181,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
                     let eventObject = event.value as? [String: AnyObject]
                     let eventName = eventObject?["name"] as? String
                     let eventCreator = eventObject?["creatorId"] as? String // TODO GET ALL DATA
-                    if eventCreator == "TODO:ENTER USER ID"{
-                        let eventType = eventObject?["type"] as? String
-                        let eventLocation = eventObject?["location"] as? String
-                        let eventDesc = eventObject?["desc"] as? String
-                        let eventStartDate = eventObject?["startDate"] as? Date
-                        let eventEndDate = eventObject?["endDate"] as? Date
-                        let eventId = eventObject?["id"] as? String
-                        
-                        let Allevent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,EventId:eventId)
-                        self.MyEvents.append(Allevent)                    }
+//                    if eventCreator == "TODO:ENTER USER ID"{
+//                        let eventType = eventObject?["type"] as? String
+//                        let eventLocation = eventObject?["location"] as? String
+//                        let eventDesc = eventObject?["desc"] as? String
+//                        let eventStartDate = eventObject?["startDate"] as? Date
+//                        let eventEndDate = eventObject?["endDate"] as? Date
+//                        let eventId = eventObject?["id"] as? String
+//
+//                        let Allevent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,Id:eventId)
+//                        self.MyEvents.append(Allevent)                    }
                 }
             }
         })
