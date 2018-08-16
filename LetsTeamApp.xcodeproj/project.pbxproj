@@ -27,6 +27,7 @@
 		84C67983211A178900DEBC65 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67982211A178900DEBC65 /* ChatViewController.swift */; };
 		84C67986211CAEAD00DEBC65 /* MapLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67985211CAEAD00DEBC65 /* MapLocationViewController.swift */; };
 		84C679882124B27000DEBC65 /* EventTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C679872124B27000DEBC65 /* EventTypes.swift */; };
+		84C6798A21253E1D00DEBC65 /* UTills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6798921253E1D00DEBC65 /* UTills.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		84C67982211A178900DEBC65 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		84C67985211CAEAD00DEBC65 /* MapLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationViewController.swift; sourceTree = "<group>"; };
 		84C679872124B27000DEBC65 /* EventTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypes.swift; sourceTree = "<group>"; };
+		84C6798921253E1D00DEBC65 /* UTills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTills.swift; sourceTree = "<group>"; };
 		F1026D9A83AD0F38C66E2E0B /* Pods_LetsTeamApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsTeamApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 			children = (
 				84C6796F210F7C9400DEBC65 /* Event.swift */,
 				84C679872124B27000DEBC65 /* EventTypes.swift */,
+				84C6798921253E1D00DEBC65 /* UTills.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				842E0547210D256900CBE5F1 /* ViewController.swift in Sources */,
 				842E0545210D256900CBE5F1 /* AppDelegate.swift in Sources */,
 				84C679882124B27000DEBC65 /* EventTypes.swift in Sources */,
+				84C6798A21253E1D00DEBC65 /* UTills.swift in Sources */,
 				84C6796D210F758200DEBC65 /* MainViewController.swift in Sources */,
 				84C6797E211A148700DEBC65 /* ChatTableViewController.swift in Sources */,
 				84C67970210F7C9400DEBC65 /* Event.swift in Sources */,

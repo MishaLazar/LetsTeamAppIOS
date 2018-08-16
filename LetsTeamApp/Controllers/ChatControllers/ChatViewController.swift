@@ -8,10 +8,17 @@
 
 import UIKit
 import JSQMessagesViewController
+import Firebase
+import FirebaseDatabase
 
 class ChatViewController: JSQMessagesViewController {
 
     var messages = [JSQMessage]()
+    var eventId = "-LJzDAtmwtgrt92cEw_Q"
+    var dateChildNode = "16082018"
+    var ut:Utills = Utills.shared
+    
+    var refChatRoom: DatabaseReference!
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
         return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     }()
@@ -23,12 +30,16 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        refChatRoom = Database.database().reference().child("ChatRooms").child(self.eventId);
+        
         senderId = "1234"
         senderDisplayName="HelloWorld"
         inputToolbar.contentView.leftBarButtonItem = nil
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         // Do any additional setup after loading the view.
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,13 +84,12 @@ class ChatViewController: JSQMessagesViewController {
    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
-//        let ref = Constants.refs.databaseChats.childByAutoId()
-//
+        let ref = self.refChatRoom.child("messages").child(self.dateChildNode).childByAutoId()
+        let messageToSave = ["senderId": senderId, "senderName": senderDisplayName, "message": text,"CreationDate": ut.dateToString(date: date)]
+
+        ref.setValue(messageToSave)
         
-        //["sender_id": senderId, "name": senderDisplayName, "text": text]
-//
-//        ref.setValue(message)
-        var message:JSQMessage = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
+        var message:JSQMessage = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text) //senderId: senderId, displayName: senderDisplayName, text: text)
         
         self.messages.append(message)
         finishSendingMessage()
