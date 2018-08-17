@@ -14,6 +14,7 @@ class EventListViewModal {
     
     static let shared = EventListViewModal()
     var userid = "-LIflQXsRuLYHN63v7Hn"
+    var userName = "MorAndMisha"
     var selectedEvent:Event?
     var Events = [Event]()
     var ETypes = [EventTypes]()

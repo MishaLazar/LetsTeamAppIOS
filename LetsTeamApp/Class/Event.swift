@@ -17,9 +17,10 @@ class Event{
     var EventStartDate:Date?
     var EventEndDate:Date?
     var EventTypeImg:UIImage?
+    var Active:Int?
     var Id:String?
     
-    init(EventName:String? , EventType:String? ,EventLocation:String? ,EventDesc:String? ,EventStartDate:Date?, EventEndDate:Date?,Id:String? ){
+    init(EventName:String? , EventType:String? ,EventLocation:String? ,EventDesc:String? ,EventStartDate:Date?, EventEndDate:Date?,Id:String?,Active:Int?){
         self.EventName = EventName
         self.EventDesc = EventDesc
         self.EventType = EventType
@@ -28,6 +29,7 @@ class Event{
         self.EventEndDate = EventEndDate
         self.EventLocation = EventLocation
         self.Id = Id
+        self.Active = Active
     }
     
     

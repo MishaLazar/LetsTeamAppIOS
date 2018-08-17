@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class EventDescriptionViewController: UIViewController {
 
@@ -23,17 +25,28 @@ class EventDescriptionViewController: UIViewController {
     @IBOutlet weak var btnChatRoom: UIButton!
     
     var EventIdSelected:String = ""
+    var isListed:Bool = false
+    var viewModal:EventListViewModal = EventListViewModal.shared
+    
+    var ref: DatabaseReference!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         self.EventDescTxtView.text = self.selectedEvent.EventDesc
         self.EventNameLbl.text = self.selectedEvent.EventName
         self.EventImageView.image = UIImage(named: EventTypePrefix + self.selectedEvent.EventType!)
         
+        ref = Database.database().reference().child("ListedEvents").child(self.viewModal.userid);
+        reloadStar()
+        
+        
         // Do any additional setup after loading the view.
     }
-
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,6 +60,16 @@ class EventDescriptionViewController: UIViewController {
         }
     }
   
+    @IBAction func onListInToEvent(_ sender: Any) {
+        
+        let listInEventUpdate = [//"EventId": self.viewModal.selectedEvent!.Id as? String,
+                                 "isListed": self.isListed ? 0 : 1
+            ] as [String : Any]
+        
+        self.isListed = self.isListed ? false : true
+        reloadStar()
+        ref.child((self.viewModal.selectedEvent?.Id)!).updateChildValues(listInEventUpdate)
+    }
     @IBAction func goToEventLocation(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -54,5 +77,14 @@ class EventDescriptionViewController: UIViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func reloadStar() {
+        if self.isListed {
+            self.btnEventFavorite.setImage(UIImage(named: "gold-Star.svg"),for: .normal)
+        } else {
+            self.btnEventFavorite.setImage(UIImage(named: "Empty-Star"),for: .normal)
+        }
+        
     }
 }

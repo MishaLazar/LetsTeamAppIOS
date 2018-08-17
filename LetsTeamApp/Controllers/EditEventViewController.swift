@@ -22,6 +22,8 @@ class EditEventViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var lstEventType: UIPickerView!
     @IBOutlet weak var txtEventName: UITextField!
     @IBOutlet weak var txtEventDescription: UITextView!
+    
+    @IBOutlet weak var switchIsActive: UISwitch!
     var viewModal:EventListViewModal = EventListViewModal.shared
     var selectedValue: String = ""
     
@@ -73,7 +75,7 @@ class EditEventViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
     func getDateSelected(datePicker: UIDatePicker) -> String? {
         let dateFormatter = DateFormatter()
         // Now we specify the display format, e.g. "27/08/2018
-        dateFormatter.dateFormat = "dd/MM/YYYY"
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
         // Now we get the date from the UIDatePicker and convert it to a string
         
         
@@ -90,8 +92,9 @@ class EditEventViewController: UIViewController ,UIPickerViewDelegate, UIPickerV
                      "EventType":self.selectedValue as String?,
                      "EventStartDate":self.getDateSelected(datePicker: self.dpStartDate) as String?,
                      "EventEndDate":self.getDateSelected(datePicker: self.dpEndDate) as String?,
-                     "CreatorUserId":self.viewModal.userid
-        ]
+                     "CreatorId":self.viewModal.userid,
+                     "Active":self.switchIsActive.isOn ? 1 : 0
+            ] as [String : Any]
         
         refEvents.child(eventId).setValue(event)
     }
