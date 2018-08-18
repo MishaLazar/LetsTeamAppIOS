@@ -32,30 +32,20 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         refEvents = Database.database().reference().child("events");
-      //  refUsers = Database.database().reference().child("users").child("PUT USER ID HERE");
-
-        //test
-        /*let Myevent:Event = Event(EventName: "EventName", EventType: "sport", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"-LJzDAtmwtgrt92cEw_Q")
-        let Myevent2:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"-LJzDAtmwtgrt92cEw_Q")
-        self.MyEvents.insert(Myevent, at: 0)
-        self.MyEvents.insert(Myevent2, at: 0)
         
-        let Listedevent:Event = Event(EventName: "EventName", EventType: "study", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"-LJzDAtmwtgrt92cEw_Q")
-        self.Listed.insert(Listedevent,at: 0)
         
-        let Allevent:Event = Event(EventName: "EventName", EventType: "trip", EventLocation: "here", EventDesc: "test test", EventStartDate: nil, EventEndDate: nil,Id:"-LJzDAtmwtgrt92cEw_Q")
-        self.AllEvents.insert(Allevent, at:0)*/
-        //getAllEvents()
-        self.viewModal.setEvents(Events: self.MyEvents)
+        //self.viewModal.setEvents(Events: self.MyEvents)
         // Do any additional setup after loading the view, typically from a nib.
         changeMainViewSelectedSegment(segMainEvents.selectedSegmentIndex)
         
     
     }
-    
+    //override func viewWillAppear(_ animated: Bool) {
+      //  getAllEvents()
+       // self.viewModal.setEvents(Events: self.MyEvents)    }
     override func viewDidAppear(_ animated: Bool) {
         getAllEvents()
-    }
+        self.viewModal.setEvents(Events: self.MyEvents)    }
     
     @IBAction func segMainEventsSegmentSelected(_ sender: Any) {
         
@@ -66,7 +56,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
         
         self.viewModal.Events.removeAll()
         self.EventContentCollectionView.reloadData()
-        
         
         switch index {
         case 0:
@@ -171,7 +160,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
                     let eventStatus = eventObject?["Active"] as? Int
                     let eventCreatorId = eventObject?["CreatorId"] as? String
 
-                    let NewEvent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,Id:eventId, Active:eventStatus)
+                    let NewEvent:Event = Event(EventName: eventName, EventType: eventType, EventLocation:eventLocation, EventDesc:eventDesc, EventStartDate:eventStartDate, EventEndDate: eventEndDate,Id:eventId, Active:eventStatus,EventCreatorUserId: eventCreatorId)
                     
                     self.AllEvents.append(NewEvent)
 
@@ -183,6 +172,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
                 }
             }
         })
+        
+        self.EventContentCollectionView.reloadData()
+        
     }
     
    

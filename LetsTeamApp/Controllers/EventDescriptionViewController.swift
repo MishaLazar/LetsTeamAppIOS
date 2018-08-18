@@ -9,14 +9,20 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import GoogleMaps
 
 class EventDescriptionViewController: UIViewController {
 
+   
+    @IBOutlet weak var EditButtonView: UIView!
+    @IBOutlet weak var btnEditEvent: UIButton!
     @IBOutlet weak var EventImageView: UIImageView!
     @IBOutlet weak var EventNameLbl: UILabel!
     
     @IBOutlet weak var EventDescTxtView: UITextView!
     
+    
+   
     let EventTypePrefix:String = "bck_"
     var selectedEvent:Event = EventListViewModal.shared.selectedEvent!
     
@@ -34,8 +40,9 @@ class EventDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //enableEditIfMyEvent()
         
-        
+
         self.EventDescTxtView.text = self.selectedEvent.EventDesc
         self.EventNameLbl.text = self.selectedEvent.EventName
         self.EventImageView.image = UIImage(named: EventTypePrefix + self.selectedEvent.EventType!)
@@ -47,6 +54,9 @@ class EventDescriptionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
   
+    override func viewWillAppear(_ animated: Bool) {
+        enableEditIfMyEvent()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,7 +69,16 @@ class EventDescriptionViewController: UIViewController {
           self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-  
+    func enableEditIfMyEvent(){
+        
+        if self.viewModal.selectedEvent?.EventCreatorUserId == self.viewModal.userid {
+            self.EditButtonView.frame.size.height = 45
+        } else {
+            self.EditButtonView.frame.size.height = 0
+        }
+        
+        
+    }
     @IBAction func onListInToEvent(_ sender: Any) {
         
         let listInEventUpdate = [//"EventId": self.viewModal.selectedEvent!.Id as? String,
@@ -72,12 +91,34 @@ class EventDescriptionViewController: UIViewController {
     }
     @IBAction func goToEventLocation(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "MapLocationViewController") as? MapLocationViewController{
+        let geocoder = CLGeocoder()
+        //let address =
+        geocoder.geocodeAddressString((self.viewModal.selectedEvent?.EventLocation!)!, completionHandler: {(placemarks, error) -> Void in
+            if((error) != nil){
+                print("Error", error ?? "")
+            }
+            if let placemark = placemarks?.first {
+                self.viewModal.selectedEventLat = placemark.location?.coordinate.latitude
+                self.viewModal.selectedEventLong = placemark.location?.coordinate.longitude
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let vc = storyboard.instantiateViewController(withIdentifier: "MapLocationViewController") as? MapLocationViewController{
+                    
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                
+            }
+           
             
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        })
+        
     }
+    
+    
+   
+    @IBAction func onEditEvent(_ sender: Any) {
+    }
+    
     
     func reloadStar() {
         if self.isListed {

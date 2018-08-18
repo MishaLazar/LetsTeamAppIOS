@@ -136,7 +136,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HNw-hN-0VZ">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="HNw-hN-0VZ">
                                 <rect key="frame" x="8" y="84" width="359" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="eSt-xy-Qyd"/>
@@ -199,7 +199,7 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qG-qM-or6">
                                 <rect key="frame" x="8" y="629" width="359" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Create New Event"/>
                                 <connections>
                                     <action selector="CreateNewEvent:" destination="Yyu-nV-xVT" eventType="touchUpInside" id="vj7-Ln-9ej"/>
                                 </connections>
@@ -240,24 +240,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XYi-nn-Dvg">
-                                <rect key="frame" x="0.0" y="20" width="375" height="662"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="661"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p3g-gO-b45">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oE-gL-9mT">
+                                                <rect key="frame" x="321" y="15" width="46" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="CEf-Wa-rSd"/>
+                                                </constraints>
+                                                <state key="normal" title="Edit"/>
+                                                <connections>
+                                                    <action selector="onEditEvent:" destination="fS2-7y-BA5" eventType="touchUpInside" id="57q-AG-RUh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="6oE-gL-9mT" firstAttribute="leading" secondItem="p3g-gO-b45" secondAttribute="leading" constant="321" id="6JI-qu-CII"/>
+                                            <constraint firstAttribute="height" constant="85" id="C6K-kh-qrl"/>
+                                            <constraint firstAttribute="trailing" secondItem="6oE-gL-9mT" secondAttribute="trailing" constant="8" id="Ggf-Fw-cxW"/>
+                                            <constraint firstItem="6oE-gL-9mT" firstAttribute="top" secondItem="p3g-gO-b45" secondAttribute="top" constant="45" id="UN9-j2-EYF"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-JM-Q9a" customClass="UiViewCardEffect" customModule="LetsTeamApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
+                                        <rect key="frame" x="0.0" y="93" width="375" height="230"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFw-3Q-5SB">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="310" id="EW7-Ep-NCr"/>
+                                            <constraint firstAttribute="height" constant="230" id="EW7-Ep-NCr"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZG-kf-qkv" customClass="UiViewCardEffect" customModule="LetsTeamApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="318" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="331" width="375" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwu-ow-VJ1">
                                                 <rect key="frame" x="0.0" y="8" width="343" height="40"/>
@@ -274,7 +296,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wni-z5-j0r" customClass="UiViewCardEffect" customModule="LetsTeamApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="382" width="375" height="199"/>
+                                        <rect key="frame" x="0.0" y="395" width="375" height="185"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Event Decription" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-Er-rLw">
                                                 <rect key="frame" x="0.0" y="0.0" width="376" height="199"/>
@@ -288,7 +310,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNQ-eP-1Ji">
-                                        <rect key="frame" x="0.0" y="589" width="375" height="73"/>
+                                        <rect key="frame" x="0.0" y="588" width="375" height="73"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQs-Oz-GaS">
                                                 <rect key="frame" x="162" y="8" width="50" height="50"/>
@@ -353,10 +375,12 @@
                         <viewLayoutGuide key="safeArea" id="QFt-y0-wTZ"/>
                     </view>
                     <connections>
+                        <outlet property="EditButtonView" destination="p3g-gO-b45" id="IOa-cv-cC1"/>
                         <outlet property="EventDescTxtView" destination="Z7Y-Er-rLw" id="Q5N-Dd-Fph"/>
                         <outlet property="EventImageView" destination="PFw-3Q-5SB" id="K3l-W5-ilM"/>
                         <outlet property="EventNameLbl" destination="nwu-ow-VJ1" id="IGw-0X-zlG"/>
                         <outlet property="btnChatRoom" destination="WtV-lR-GSc" id="LJe-c3-rfd"/>
+                        <outlet property="btnEditEvent" destination="6oE-gL-9mT" id="S4U-sT-PwJ"/>
                         <outlet property="btnEventFavorite" destination="3DU-8H-y3O" id="16X-zw-bvd"/>
                         <outlet property="btnEventLocation" destination="UQs-Oz-GaS" id="n4f-3I-hh0"/>
                     </connections>

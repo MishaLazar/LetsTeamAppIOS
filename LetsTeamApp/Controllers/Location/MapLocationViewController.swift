@@ -10,11 +10,13 @@ import UIKit
 import GoogleMaps
 
 class MapLocationViewController: UIViewController {
-
+    var viewModal:EventListViewModal = EventListViewModal.shared
+    //var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,27 +25,17 @@ class MapLocationViewController: UIViewController {
     }
     
     override func loadView() {
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
+        var marker = GMSMarker()
         
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
+        let camera = GMSCameraPosition.camera(withLatitude: self.viewModal.selectedEventLat!, longitude: self.viewModal.selectedEventLong!, zoom: 15)
+        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        marker = GMSMarker(position: CLLocationCoordinate2D(latitude: self.viewModal.selectedEventLat!, longitude: self.viewModal.selectedEventLong!))
+        marker.title = self.viewModal.selectedEvent?.EventName
         marker.map = mapView
+        view = mapView
     }
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }

@@ -7,8 +7,7 @@
 //
 
 import Foundation
-//import Firebase
-//import FirebaseDatabase
+
 
 class EventListViewModal {
     
@@ -16,6 +15,8 @@ class EventListViewModal {
     var userid = "-LIflQXsRuLYHN63v7Hn"
     var userName = "MorAndMisha"
     var selectedEvent:Event?
+    var selectedEventLong:Double?
+    var selectedEventLat:Double?
     var Events = [Event]()
     var ETypes = [EventTypes]()
 //    private var dbRef = Database.database().reference()
@@ -26,11 +27,11 @@ class EventListViewModal {
     
     func setEvents(Events:[Event]){
         self.Events = Events
-        
     }
     
     func setSelectedEvent(event:Event){
         self.selectedEvent = event
+        
     }
     func removeSelectedEvent(){
         self.selectedEvent = nil
